@@ -1,17 +1,21 @@
 <script setup>
 import { ref } from 'vue'
+import ListaProductos from './componentes/ListaProductos.vue'
 
 const titulo = ref('Lista de la compra')
-const productos = ref([])
 const productoNuevo = ref('')
 const esImportante = ref(false)
+
+const productos = ref([])
 
 const añadirALaLista = () => {
   productos.value.push({
     id: productos.value.length + 1,
-    nombre: productoNuevo.value
+    nombre: productoNuevo.value,
+    importante: esImportante.value
   })
   productoNuevo.value = ''
+  esImportante.value = false
 }
 </script>
 
@@ -29,11 +33,7 @@ const añadirALaLista = () => {
     </label>
     <button class="btn btn-primary">Añadir producto</button>
   </form>
-  <ul>
-    <li v-for="{ id, nombre } in productos" :key="id">
-      {{ nombre }} - {{ id }}
-    </li>
-  </ul>
+  <ListaProductos :productos="productos" />
 
   <p v-if="!productos.length">La lista está vacia</p>
 </template>

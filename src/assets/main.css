@@ -60,10 +60,6 @@ p {
 	transition: all 0.1s ease-in;
 }
 
-li:hover {
-	color: #22292f;
-}
-
 li input {
 	margin: 0 0.5rem 0;
 }
